@@ -3,10 +3,15 @@ package aetios.digital.peopleApiProject.service;
 import aetios.digital.peopleApiProject.dto.request.PeopleDTO;
 import aetios.digital.peopleApiProject.dto.response.MessageResponseDTO;
 import aetios.digital.peopleApiProject.entity.People;
+import aetios.digital.peopleApiProject.exception.PeopleNotFoundException;
 import aetios.digital.peopleApiProject.mapper.PeopleMapper;
 import aetios.digital.peopleApiProject.repository.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service //Gerencia Classe Responsavel pela regra de negócio
@@ -28,5 +33,19 @@ public class PeopleService {
                 .builder()
                 .message("Created people with ID " + savedPeople.getId())
                 .build();
+    }
+
+    public List<PeopleDTO> listAll() {
+        List<People> allPerson = peopleRepository.findAll();
+        return allPerson.stream()
+                .map(peopleMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public PeopleDTO findById(Long id) throws PeopleNotFoundException {
+        People people = peopleRepository.findById(id)
+                .orElseThrow(() -> new PeopleNotFoundException(id));
+
+        return peopleMapper.toDTO(people);
     }
 }
