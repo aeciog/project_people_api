@@ -1,11 +1,7 @@
 package aetios.digital.peopleApiProject.controller;
 
-
-
 import aetios.digital.peopleApiProject.dto.request.PeopleDTO;
 import aetios.digital.peopleApiProject.dto.response.MessageResponseDTO;
-import aetios.digital.peopleApiProject.entity.People;
-
 import aetios.digital.peopleApiProject.exception.PeopleNotFoundException;
 import aetios.digital.peopleApiProject.service.PeopleService;
 
@@ -37,6 +33,10 @@ public class PeopleController {
     @GetMapping("/{id}")
     public PeopleDTO findById(@PathVariable Long id) throws PeopleNotFoundException {
         return peopleService.findById(id);
+    }
+    @PutMapping("/{id}")
+    public MessageResponseDTO updateById(@PathVariable  Long id, @RequestBody @Valid PeopleDTO peopleDTO) throws PeopleNotFoundException {
+        return peopleService.updateById(id, peopleDTO);
     }
 
     @DeleteMapping("/{id}")

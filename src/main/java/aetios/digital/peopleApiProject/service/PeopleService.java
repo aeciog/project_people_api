@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -28,10 +27,7 @@ public class PeopleService {
         People peopleToSave = peopleMapper.toModel(peopleDTO);
 
         People savedPeople = peopleRepository.save(peopleToSave);
-        return MessageResponseDTO
-                .builder()
-                .message("Created people with ID " + savedPeople.getId())
-                .build();
+        return createdMessageResponse(savedPeople.getId(), "Created people with ID ");
     }
 
     public List<PeopleDTO> listAll() {
@@ -48,13 +44,27 @@ public class PeopleService {
 
     public void delete(Long id) throws PeopleNotFoundException {
         verifyIfExists(id);
-
         peopleRepository.deleteById(id);
     }
 
+    public MessageResponseDTO updateById (Long id, PeopleDTO peopleDTO) throws PeopleNotFoundException {
+        verifyIfExists(id);
+
+        People peopleToUpdate = peopleMapper.toModel(peopleDTO);
+
+        People updatedPeople = peopleRepository.save(peopleToUpdate);
+        return createdMessageResponse(updatedPeople.getId(),"Updated people with ID ");
+    }
 
     private People verifyIfExists(Long id) throws PeopleNotFoundException{
         return peopleRepository.findById(id)
                 .orElseThrow(() -> new PeopleNotFoundException(id));
+    }
+
+    private static MessageResponseDTO createdMessageResponse(Long id, String message) {
+        return MessageResponseDTO
+                .builder()
+                .message(message + id)
+                .build();
     }
 }
