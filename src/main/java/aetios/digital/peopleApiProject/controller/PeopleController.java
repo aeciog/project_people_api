@@ -9,6 +9,7 @@ import aetios.digital.peopleApiProject.entity.People;
 import aetios.digital.peopleApiProject.exception.PeopleNotFoundException;
 import aetios.digital.peopleApiProject.service.PeopleService;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +19,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/person")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PeopleController {
-
     private PeopleService peopleService;
-
-    @Autowired
-    public PeopleController(PeopleService personService) {
-        this.peopleService = personService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -6,6 +6,7 @@ import aetios.digital.peopleApiProject.entity.People;
 import aetios.digital.peopleApiProject.exception.PeopleNotFoundException;
 import aetios.digital.peopleApiProject.mapper.PeopleMapper;
 import aetios.digital.peopleApiProject.repository.PeopleRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +15,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 
+
 @Service //Gerencia Classe Responsavel pela regra de negócio
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PeopleService {
 
     private PeopleRepository peopleRepository;
     private final PeopleMapper peopleMapper = PeopleMapper.INSTANCE;
 
-    @Autowired
-    public PeopleService(PeopleRepository peopleRepository) {
-        this.peopleRepository = peopleRepository;
-    }
 
     public MessageResponseDTO createPeople(PeopleDTO peopleDTO){
         People peopleToSave = peopleMapper.toModel(peopleDTO);
