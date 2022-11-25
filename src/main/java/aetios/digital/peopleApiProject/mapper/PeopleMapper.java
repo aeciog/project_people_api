@@ -1,6 +1,5 @@
 package aetios.digital.peopleApiProject.mapper;
 
-
 import aetios.digital.peopleApiProject.dto.request.PeopleDTO;
 import aetios.digital.peopleApiProject.entity.People;
 import org.mapstruct.Mapper;
