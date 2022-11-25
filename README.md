@@ -34,7 +34,7 @@ São necessários os seguintes pré-requisitos para a execução do projeto dese
 * Conta no Heroku para o deploy do projeto na nuvem
 * Muita vontade de aprender e compartilhar conhecimento :)
 
-Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
+Abaixo, seguem links, sobre tópicos sobre o desenvolvimento:
 
 * [SDKMan! para gerenciamento e instalação do Java e Maven](https://sdkman.io/)
 * [Referência do Intellij IDEA Community, para download](https://www.jetbrains.com/idea/download)
@@ -47,8 +47,4 @@ Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
 * [Documentação oficial do Lombok](https://projectlombok.org/)
 * [Documentação oficial do Map Struct](https://mapstruct.org/)
 * [Referência para o padrão arquitetural REST](https://restfulapi.net/)
-
-[Neste link](https://drive.google.com/file/d/1crVPOVl6ok2HeYjh3fjQuGQn2lDZVHrn/view?usp=sharing), seguem os slides apresentados como o roteiro utilizado para o desenvolvimento do projeto da nossa sessão.
-
-
 
